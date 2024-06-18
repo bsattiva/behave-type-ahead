@@ -5,6 +5,7 @@ import com.intellij.codeInsight.completion.CompletionParameters;
 import com.intellij.codeInsight.completion.CompletionProvider;
 import com.intellij.codeInsight.completion.CompletionResultSet;
 import com.intellij.codeInsight.lookup.LookupElementBuilder;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.progress.ProgressManager;
 
 import com.intellij.util.ProcessingContext;
@@ -19,6 +20,8 @@ import java.util.List;
  */
 class DictionaryCompletionProvider extends CompletionProvider<CompletionParameters> {
     private final boolean onlyManual;
+    private static final Logger LOGGER = Logger.getInstance(DictionaryCompletionProvider.class);
+
     /**
      * @param onlyManual if true, then completions are only returned when the user manually requested it
      */
@@ -28,15 +31,17 @@ class DictionaryCompletionProvider extends CompletionProvider<CompletionParamete
 
     @Override
     protected void addCompletions(@NotNull CompletionParameters parameters, @NotNull ProcessingContext context, @NotNull CompletionResultSet result) {
-        if (parameters.isAutoPopup() && onlyManual) {
-            return;
-        }
+        LOGGER.info("ENTERED EVENT");
+//        if (parameters.isAutoPopup() && onlyManual) {
+//            return;
+//        }
         var document = parameters.getEditor().getDocument();
         var lines = document.getLineCount();
         var text = document.getText();
         var position = parameters.getOffset();
         var lineNumber = document.getLineNumber(position);
         var currentLine = text.split("\n")[lineNumber];
+        LOGGER.info("CURRENT LINE: " + currentLine);
         if (isFeature(text, currentLine.trim().toLowerCase())) {
 
             String prefix = result.getPrefixMatcher().getPrefix();

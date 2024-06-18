@@ -32,11 +32,6 @@
      </applicationListeners>
     <actions>
 
-<!--        <action id="com.behave.TypeAhead" class="com.behave.TypeAhead" text="Find Definitions"-->
-<!--                description="Search for available definitions">-->
-<!--            <add-to-group group-id="EditorPopupMenu" anchor="last"/>-->
-<!--            <keyboard-shortcut keymap="$default" first-keystroke="ctrl COMMA" second-keystroke="ctrl COMMA"/>-->
-<!--        </action>-->
 
     </actions>
 </idea-plugin>
