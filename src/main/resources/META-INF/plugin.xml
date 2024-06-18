@@ -1,0 +1,42 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>org.behavetypeahead.BehaveTypeAhead</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>BehaveTypeAhead</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="papazaitsa@gmail.com" url="">papazaitsa@gmail.com</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+    <h1>show step definitions for your behave features</h1>
+  ]]></description>
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <completion.contributor language="any"
+                                implementationClass="com.behave.completion.StringLiteralDictionaryContributor"/>
+
+        <preloadingActivity implementation="com.behave.completion.DictionaryLoader"/>
+    </extensions>
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.python-core-capable</depends>
+
+    <applicationListeners>
+     </applicationListeners>
+    <actions>
+
+<!--        <action id="com.behave.TypeAhead" class="com.behave.TypeAhead" text="Find Definitions"-->
+<!--                description="Search for available definitions">-->
+<!--            <add-to-group group-id="EditorPopupMenu" anchor="last"/>-->
+<!--            <keyboard-shortcut keymap="$default" first-keystroke="ctrl COMMA" second-keystroke="ctrl COMMA"/>-->
+<!--        </action>-->
+
+    </actions>
+</idea-plugin>
